@@ -20,6 +20,12 @@
 #ifndef STRINGS_H
 #define STRINGS_H
 
+#include<stddef.h>
+#include<stdlib.h>
+#include<stdarg.h>
+#include<stdbool.h>
+#include<string.h>
+
 typedef struct{
     char  *cstr;
     ptrdiff_t length;
@@ -165,7 +171,7 @@ static string_t string_get_path(string_t filename){
     }, last_slash - filename.cstr);
 }
 
-        
+#ifdef LIST_H 
 
 static string_t str_temp(string_temp_t *arena, string_t str){
     list_push(*arena, str);
@@ -178,6 +184,8 @@ static void str_temp_free(string_temp_t temp){
     }
     list_free(temp);
 }
+
+#endif
 
 
 #endif /*STRINGS_H*/
